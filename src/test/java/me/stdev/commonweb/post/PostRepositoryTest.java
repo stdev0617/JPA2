@@ -57,20 +57,20 @@ public class PostRepositoryTest {
         assertThat(all.size(),is(1));
     }
 
-//    @Test
-//    public void updateTitle(){
-//        Post spring = savePost();
-//
-//        String hibernate = "hibernate";
-//        int update = postRepository.updateTitle("hibernate", spring.getId());
-//        assertThat(update, is(1));
-//
-//        Optional<Post> byId = postRepository.findById(spring.getId());
-//        assertThat(byId.get().getTitle(), is(hibernate));
-//    }
-
     @Test
-    public void updateTitle() {
+    public void updateTitle1(){
+        Post spring = savePost();
+
+        String hibernate = "hibernate";
+        int update = postRepository.updateTitle("hibernate", spring.getId());
+        assertThat(update, is(1));
+
+        Optional<Post> byId = postRepository.findById(spring.getId());
+        assertThat(byId.get().getTitle(), is(hibernate));
+    }
+    
+    @Test
+    public void updateTitle2() {
         Post spring = savePost();
         spring.setTitle("hibernate");
 
