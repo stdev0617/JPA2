@@ -22,19 +22,35 @@ public class CommentRepositoryTest {
 
     @Test
     public void getComment() {
-//        Post post = new Post();
-//        post.setTitle("jpa");
-//        Post savedPost = postRepository.save(post);
-//
-//        Comment comment = new Comment();
+        Post post = new Post();
+        post.setTitle("jpa");
+        Post savedPost = postRepository.save(post);
+
+        Comment comment = new Comment();
 //        comment.setComment("comment");
-//        comment.setPost(savedPost);
+        comment.setComment("spring data jpa projection");
+        comment.setPost(savedPost);
 //        commentRepository.save(comment);
+        comment.setUp(10);
+        comment.setDown(1);
+        comments.save(comment);
+
+//        comments.findByPost_Id(savedPost.getId()).forEach(c -> {
+//            System.out.println("=================");
+//            System.out.println(c.getVotes());
+//        });
+
+        comments.findByPost_Id(savedPost.getId(), CommentSummary.class).forEach(c -> {
+            System.out.println("=================");
+            System.out.println(c.getComment());
+        });
 
 //        Optional<Comment> byId = commentRepository.findById(1l);
 
-        comments.getById(1l);
-        System.out.println("=======================");
-        comments.findById(1l);
+//        comments.getById(1l);
+//        System.out.println("=======================");
+//        comments.findById(1l);
+
+//        comments.findByPost_Id(1l);
     }
 }
